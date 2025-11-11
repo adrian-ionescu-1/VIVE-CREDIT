@@ -1,73 +1,113 @@
-# React + TypeScript + Vite
+# 1. Arhitectură sistem Vive Credit
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 1.1.Arhitectura generala
 
-Currently, two official plugins are available:
+    UI: React (SPA)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    API: Node.js (TypeScript)
 
-## React Compiler
+    DB: PostgreSQL
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+    Messaging / Queue: Kafka / RabbitMQ (sau SQS dacă infra cloud-managed)
 
-## Expanding the ESLint configuration
+    Object storage: S3-compatible (documente, contracte)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+    Auth: Identity Provider (OpenID Connect) + JWT
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+    CI/CD: GitHub Actions / GitLab CI
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+    Observabilitate: OpenTelemetry + Prometheus + Grafana + ELK
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 1.2 Modele de comunicare
+
+    Synchronous (REST/HTTP) — pentru interacțiuni client → API (UI, mobile), apeluri rapide: creare aplicație, preluare status, autentificare.
+
+    Asynchronous (Event-driven / Queue) — pentru procese lungi: scoring heavy, reconciliere, notificări, job-uri colectare, integrații cu PSP/KYC/AML.
+
+## 1.3 Diagrama Completa C4 pe nivelele: Context/Conteiners/Components/Code
+
+### 1. Context
+
+- Client final (aplicant)
+- Angajați IFN (vânzări, risc, colectări)
+- Sisteme externe (KYC, AML, PSP)
+
+### 2. Containers
+
+- **UI:** React SPA
+- **API:** Node.js + Express/TypeScript
+- **DB:** PostgreSQL
+- **Queue:** Kafka / RabbitMQ
+- **Storage:** S3-compatible (documente, contracte)
+- **Auth:** Identity Provider + JWT
+
+### 3. Components (exemplu pentru API)
+
+- Onboarding module
+- KYC module
+- Credit Applications module
+- Scoring & Decision module
+- Contracting module
+- Payments & Servicing module
+- Collections module
+- Admin & Reporting module
+
+### 4. Code
+
+- React Components (Header, Footer, Pages)
+- API Controllers / Services / Repositories
+- DB Schemas / Models
+- Jobs pentru queue / notificări / reconciliere
+
+# 2. Structura proiectului (React + Vite + Tailwind)
+
+vive-credit/
+├── public/
+│ ├── index.html
+src/
+├── core/
+│ ├── components/
+│ ├── layouts/
+│ ├── services/
+│ └── utils/
+├── modules/
+│ ├── onboarding/
+│ ├── kyc/
+│ ├── applications/
+│ ├── scoring/
+│ ├── contract/
+│ ├── payments/
+│ ├── collections/
+│ ├── admin/
+│ └── reports/
+├── routes/
+│ └── AppRoutes.tsx
+├── store/
+├── hooks/
+├── types/
+├── styles/
+├── utils/
+├── App.tsx
+└── main.tsx
+├── tailwind.config.js
+├── postcss.config.js
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── README.md
+
+# 3. Pași pentru rulare locală
+
+Instalează dependențele:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Pornește serverul de dezvoltare:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Deschide browserul la http://localhost:5173
