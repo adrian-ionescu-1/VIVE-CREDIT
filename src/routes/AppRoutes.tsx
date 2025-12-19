@@ -215,6 +215,9 @@ const AppRoutes = () => {
 
       {/* FALLBACK */}
       <Route path="*" element={<Navigate to="/" replace />} />
+
+      {/* Policy Engine */}
+      <Route path="/policy-engine" element={<PolicyEnginePage />} />
     </Routes>
   );
 };
