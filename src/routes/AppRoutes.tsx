@@ -1,32 +1,32 @@
-import KycStatusPage from "@/pages/loan/VerificationStatusPage";
-import { Navigate, Route, Routes } from "react-router-dom";
+import KycStatusPage from '@/pages/loan/VerificationStatusPage';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 /* Public pages */
-import LandingPage from "@/modules/landing/pages/LandingPage";
-import AboutPage from "@/modules/static/pages/AboutPage";
-import AnpcPage from "@/modules/static/pages/AnpcPage";
-import ContactPage from "@/modules/static/pages/ContactPage";
-import CookiePolicyPage from "@/modules/static/pages/CookiePolicyPage";
-import PrivacyPage from "@/modules/static/pages/PrivacyPage";
-import ProductsPage from "@/modules/static/pages/ProductsPage";
-import TermsPage from "@/modules/static/pages/TermsPage";
+import LandingPage from '@/modules/landing/pages/LandingPage';
+import AboutPage from '@/modules/static/pages/AboutPage';
+import AnpcPage from '@/modules/static/pages/AnpcPage';
+import ContactPage from '@/modules/static/pages/ContactPage';
+import CookiePolicyPage from '@/modules/static/pages/CookiePolicyPage';
+import PrivacyPage from '@/modules/static/pages/PrivacyPage';
+import ProductsPage from '@/modules/static/pages/ProductsPage';
+import TermsPage from '@/modules/static/pages/TermsPage';
 
 /* Layout Public */
-import PublicLayout from "@/modules/landing/layout/PublicLayout";
+import PublicLayout from '@/modules/landing/layout/PublicLayout';
 
 /* Auth */
-import LoginPage from "@/modules/auth/pages/LoginPage";
-import RegisterPage from "@/modules/auth/pages/RegisterPage";
+import LoginPage from '@/modules/auth/pages/LoginPage';
+import RegisterPage from '@/modules/auth/pages/RegisterPage';
 
-import ClientLoginPage from "@/modules/auth/pages/ClientLoginPage";
-import ClientRegisterPage from "@/modules/auth/pages/ClientRegisterPage";
-import ForgotPasswordPage from "@/modules/auth/pages/ForgotPasswordPage";
+import ClientLoginPage from '@/modules/auth/pages/ClientLoginPage';
+import ClientRegisterPage from '@/modules/auth/pages/ClientRegisterPage';
+import ForgotPasswordPage from '@/modules/auth/pages/ForgotPasswordPage';
 
-import OperatorLoginPage from "@/modules/auth/pages/OperatorLoginPage";
+import OperatorLoginPage from '@/modules/auth/pages/OperatorLoginPage';
 
 /* Onboarding CLIENT */
-import OnboardingPage from "@/modules/onboarding/pages/OnboardingPage";
-import SuccessPage from "@/modules/onboarding/pages/SuccessPage";
+import OnboardingPage from '@/modules/onboarding/pages/OnboardingPage';
+import SuccessPage from '@/modules/onboarding/pages/SuccessPage';
 
 /* Dashboard Client */
 import ClientHomePage from "@/modules/dashboard/pages/ClientHomePage";
@@ -40,14 +40,14 @@ import DecisionResultCard from "@/modules/decision-engine/components/DecisionRes
 import LoanForm from "@/pages/loan/LoanForm";
 
 /* Operator Dashboard */
-import ProductSettingsPage from "@/modules/admin-products/pages/ProductSettingsPage";
-import OperatorDashboardLayout from "@/modules/operator-dashboard/layout/OperatorDashboardLayout";
-import ApplicationsPage from "@/modules/operator-dashboard/pages/ApplicationsPage";
-import ClientManagementPage from "@/modules/operator-dashboard/pages/ClientManagement";
-import OperatorDashboardPage from "@/modules/operator-dashboard/pages/OperatorDashboardPage";
-import RiskPage from "@/modules/operator-dashboard/pages/RiskPage";
-import ApplicationDetail from "@/modules/operator-dashboard/submodules/sales/ApplicationDetail";
-import SalesDashboard from "@/modules/operator-dashboard/submodules/sales/SalesDashboard";
+import ProductSettingsPage from '@/modules/admin-products/pages/ProductSettingsPage';
+import OperatorDashboardLayout from '@/modules/operator-dashboard/layout/OperatorDashboardLayout';
+import ApplicationsPage from '@/modules/operator-dashboard/pages/ApplicationsPage';
+import ClientManagementPage from '@/modules/operator-dashboard/pages/ClientManagement';
+import OperatorDashboardPage from '@/modules/operator-dashboard/pages/OperatorDashboardPage';
+import RiskPage from '@/modules/operator-dashboard/pages/RiskPage';
+import ApplicationDetail from '@/modules/operator-dashboard/submodules/sales/ApplicationDetail';
+import SalesDashboard from '@/modules/operator-dashboard/submodules/sales/SalesDashboard';
 
 /* Engines */
 import { AuditDashboard } from "@/modules/admin-audit/AuditDashboard";
@@ -118,7 +118,7 @@ const AppRoutes = () => {
       <Route
         path='/onboarding'
         element={
-          <ProtectedRoute allowedRoles={["client"]}>
+          <ProtectedRoute allowedRoles={['client']}>
             <OnboardingPage />
           </ProtectedRoute>
         }
@@ -127,7 +127,7 @@ const AppRoutes = () => {
       <Route
         path='/onboarding/success'
         element={
-          <ProtectedRoute allowedRoles={["client"]}>
+          <ProtectedRoute allowedRoles={['client']}>
             <SuccessPage />
           </ProtectedRoute>
         }
@@ -137,7 +137,7 @@ const AppRoutes = () => {
       <Route
         path='/dashboard/home'
         element={
-          <ProtectedRoute allowedRoles={["client"]}>
+          <ProtectedRoute allowedRoles={['client']}>
             <ClientHomePage />
           </ProtectedRoute>
         }
@@ -146,7 +146,7 @@ const AppRoutes = () => {
       <Route
         path='/dashboard'
         element={
-          <ProtectedRoute allowedRoles={["client"]}>
+          <ProtectedRoute allowedRoles={['client']}>
             <DashboardPage />
           </ProtectedRoute>
         }
@@ -155,7 +155,7 @@ const AppRoutes = () => {
       <Route
         path='/dashboard/help'
         element={
-          <ProtectedRoute allowedRoles={["client"]}>
+          <ProtectedRoute allowedRoles={['client']}>
             <HelpPage />
           </ProtectedRoute>
         }
@@ -164,7 +164,7 @@ const AppRoutes = () => {
       <Route
         path='/dashboard/loan'
         element={
-          <ProtectedRoute allowedRoles={["client"]}>
+          <ProtectedRoute allowedRoles={['client']}>
             <LoanPage />
           </ProtectedRoute>
         }
@@ -173,7 +173,7 @@ const AppRoutes = () => {
       <Route
         path='/dashboard/loan-form'
         element={
-          <ProtectedRoute allowedRoles={["client"]}>
+          <ProtectedRoute allowedRoles={['client']}>
             <RequestLoanPage />
           </ProtectedRoute>
         }
@@ -182,7 +182,7 @@ const AppRoutes = () => {
       <Route
         path='/dashboard/payments'
         element={
-          <ProtectedRoute allowedRoles={["client"]}>
+          <ProtectedRoute allowedRoles={['client']}>
             <PaymentsPage />
           </ProtectedRoute>
         }
@@ -191,7 +191,7 @@ const AppRoutes = () => {
       <Route
         path='/dashboard/documents'
         element={
-          <ProtectedRoute allowedRoles={["client"]}>
+          <ProtectedRoute allowedRoles={['client']}>
             <DocumentsPage />
           </ProtectedRoute>
         }
@@ -200,7 +200,7 @@ const AppRoutes = () => {
       <Route
         path='/dashboard/documents/upload'
         element={
-          <ProtectedRoute allowedRoles={["client"]}>
+          <ProtectedRoute allowedRoles={['client']}>
             <UploadDocumentPage />
           </ProtectedRoute>
         }
@@ -209,7 +209,7 @@ const AppRoutes = () => {
       <Route
         path='/dashboard/verification'
         element={
-          <ProtectedRoute allowedRoles={["client"]}>
+          <ProtectedRoute allowedRoles={['client']}>
             <KycStatusPage />
           </ProtectedRoute>
         }
@@ -217,7 +217,7 @@ const AppRoutes = () => {
       <Route
         path='/dashboard/verification-timeline'
         element={
-          <ProtectedRoute allowedRoles={["client"]}>
+          <ProtectedRoute allowedRoles={['client']}>
             <KycStatusPage />
           </ProtectedRoute>
         }
@@ -226,7 +226,7 @@ const AppRoutes = () => {
       <Route
         path='/dashboard/loan-form'
         element={
-          <ProtectedRoute allowedRoles={["client"]}>
+          <ProtectedRoute allowedRoles={['client']}>
             <LoanForm />
           </ProtectedRoute>
         }
@@ -255,7 +255,7 @@ const AppRoutes = () => {
       <Route
         path='/operator'
         element={
-          <ProtectedRoute allowedRoles={["operator"]}>
+          <ProtectedRoute allowedRoles={['operator']}>
             <ApplicationsContextProvider>
               <OperatorDashboardLayout />
             </ApplicationsContextProvider>
@@ -282,7 +282,7 @@ const AppRoutes = () => {
       <Route
         path='/audit'
         element={
-          <ProtectedRoute allowedRoles={["operator"]}>
+          <ProtectedRoute allowedRoles={['operator']}>
             <AuditDashboard />
           </ProtectedRoute>
         }
