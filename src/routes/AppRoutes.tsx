@@ -50,6 +50,7 @@ import ApplicationDetail from '@/modules/operator-dashboard/submodules/sales/App
 import SalesDashboard from '@/modules/operator-dashboard/submodules/sales/SalesDashboard';
 import AuditLog from '@/modules/admin/pages/AuditLog';
 import ReportsPage from '@/modules/operator-dashboard/submodules/reports/ReportsPage';
+import CollectionsDashboard from '@/modules/operator-dashboard/submodules/collections/components/CollectionsDashboard';
 
 /* Engines */
 import { AuditDashboard } from '@/modules/admin-audit/AuditDashboard';
@@ -255,6 +256,7 @@ const AppRoutes = () => {
         <Route path='policy-engine' element={<PolicyEnginePage />} />
         <Route path='decision-engine' element={<DecisionPage />} />
         <Route path='scorecard' element={<ScorecardEngine />} />
+        <Route path='collections' element={<CollectionsDashboard />} />
         <Route path='audit-log' element={<AuditLog />} />
         <Route path='reports' element={<ReportsPage />} />
       </Route>
